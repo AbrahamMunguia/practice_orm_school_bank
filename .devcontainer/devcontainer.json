@@ -1,0 +1,4 @@
+{
+  "name": "NodeJS for express",
+  "dockerFile": "dockerfile"
+}
