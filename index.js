@@ -1,13 +1,14 @@
 const express = require("express")
+const routerApi = require('./routes');
 
 const app = express()
 const PORT = 3000
-const routerAPI = require('./routes/index')
-app.get('/',(req,res)=>{
-  res.send("Hello world!")
-})
-routerAPI(app)
-app.listen(PORT,()=>{
 
+app.get('/',(_,res)=>{
+  res.send("Hello world! aka que imbecil")
 })
+
+routerApi(app);
+
+app.listen(PORT)
 
