@@ -1,19 +1,8 @@
--- Table: public.escuela
-
--- DROP TABLE IF EXISTS public.escuela;
-
-CREATE TABLE IF NOT EXISTS public.escuela
-(
-    id integer NOT NULL DEFAULT nextval('escuela_id_seq'::regclass),
-    matricula character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    location character varying(255) COLLATE pg_catalog."default" NOT NULL DEFAULT 'Guatemala'::character varying,
-    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    create_at timestamp with time zone NOT NULL,
-    CONSTRAINT escuela_pkey PRIMARY KEY (id),
-    CONSTRAINT escuela_matricula_key UNIQUE (matricula)
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.escuela
-    OWNER to admin;
+CREATE TABLE IF NOT EXISTS `escuela` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `matricula` VARCHAR(255) NOT NULL UNIQUE,
+  `location` VARCHAR(255) NOT NULL DEFAULT 'Guatemala',
+  `name` VARCHAR(50) NOT NULL,
+  `create_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
