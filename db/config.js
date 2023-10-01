@@ -6,6 +6,8 @@ module.exports = {
     "host":"localhost",
     "port":"3306",
     "dialect": "mysql",
-    "logging": true
+    "logging": (text)=>{
+      console.log(text,'platanito gaming')
+    }
   },
 }
