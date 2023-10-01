@@ -1,27 +1,26 @@
 version: '3.3'
 services:
-  postgres:
-    image: postgres:latest
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
-      - POSTGRES_DB=school
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin123
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_USER: admin123
+      MYSQL_PASSWORD: admin123
+      MYSQL_DATABASE: school
     ports:
-      - 5432:5432
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-  pgadmin:
-    image: dpage/pgadmin4
+      - 3306:3306
+    expose:
+      - 3306
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=root
-    ports:
-      - 5050:80
-  sqlserver:
-    container_name: sql-server-db
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    ports:
-      - 1433:1433
-    environment:
-      - MSSQL_SA_PASSWORD=admin123
-      - ACCEPT_EULA=Y
+      ADMINER_DEFAULT_SERVER: db
+
+
+
+

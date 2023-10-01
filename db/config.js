@@ -1,14 +1,11 @@
-const URI = `mssql://admin:admin123@localhost:5432/school`;
-
 module.exports = {
   development: {
-    url: URI,
-    dialect: 'mssql',
-    logging:true,
-
+    "username": "admin123",
+    "password": "admin123",
+    "database": "school",
+    "host":"localhost",
+    "port":"3306",
+    "dialect": "mysql",
+    "logging": true
   },
-  production: {
-    url: URI,
-    dialect: 'mssql',
-  }
 }
